@@ -5,342 +5,320 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI ROIの真実とAPACリーダーが語る「究極の増幅器」としてのAI：日本マーケターが勝つための戦略 | GLOBAL MKT WEEKLY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --surface2: #1a1a26;
-      --accent: #e8ff47;
-      --accent2: #ff4757;
-      --text: #f0f0f0;
-      --text-muted: #888;
-      --border: rgba(232, 255, 71, 0.15);
+      --bg:         #080d1a;
+      --surface:    #0f1829;
+      --surface2:   #162035;
+      --blue:       #0ea5e9;
+      --blue-dim:   rgba(14,165,233,0.1);
+      --orange:     #f97316;
+      --orange-dim: rgba(249,115,22,0.1);
+      --text:       #e8edf5;
+      --text-2:     #8899b4;
+      --text-3:     #4a5a72;
+      --border:     rgba(255,255,255,0.07);
+      --border-blue:rgba(14,165,233,0.22);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Noto Sans JP', sans-serif;
       font-weight: 300;
+      line-height: 1.75;
       min-height: 100vh;
+      overflow-x: hidden;
     }
-
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(14,165,233,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,165,233,0.025) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none; z-index: 0;
     }
 
-    /* TICKER */
-    .ticker-bar {
-      background: var(--accent);
-      color: var(--bg);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      overflow: hidden;
-      height: 2rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .ticker-inner {
-      display: flex;
-      animation: ticker 30s linear infinite;
-      white-space: nowrap;
-    }
-
-    .ticker-inner span { padding: 0 3rem; }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* NAV */
-    nav {
-      padding: 1.2rem clamp(1.5rem, 5vw, 4rem);
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,13,26,0.88);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 0 clamp(1.5rem,5vw,4rem);
+      height: 62px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .nav-logo {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.4rem;
-      letter-spacing: 0.15em;
-      color: var(--accent);
+    .logo-mark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.05rem;
+      letter-spacing: 0.04em; color: var(--text);
       text-decoration: none;
     }
-
-    .nav-back {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .logo-mark em { color: var(--blue); font-style: normal; }
+    .back-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: var(--text-2);
+      letter-spacing: 0.1em; text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
       transition: color 0.2s;
     }
-
-    .nav-back:hover { color: var(--accent); }
+    .back-link:hover { color: var(--blue); }
 
     /* ARTICLE HERO */
-    .article-hero {
-      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
-      border-bottom: 1px solid var(--border);
-      max-width: 900px;
+    .art-hero {
+      position: relative; z-index: 1;
+      max-width: 820px; margin: 0 auto;
+      padding: clamp(3rem,8vw,6rem) clamp(1.5rem,5vw,4rem) 3rem;
     }
-
-    .article-meta {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
+    .art-meta {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem; flex-wrap: wrap;
+    }
+    .art-label {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem; border-radius: 2px;
+    }
+    .art-label.sig {
+      color: var(--blue); background: var(--blue-dim);
+      border: 1px solid var(--border-blue);
+    }
+    .art-label.upd {
+      color: var(--orange); background: var(--orange-dim);
+      border: 1px solid rgba(249,115,22,0.22);
+    }
+    .art-label::before {
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+    }
+    .art-label.sig::before { background: var(--blue); }
+    .art-label.upd::before { background: var(--orange); }
+    .art-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem; color: var(--text-3); letter-spacing: 0.1em;
+    }
+    .art-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem,6vw,3.5rem);
+      line-height: 1.1; letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
-      flex-wrap: wrap;
     }
-
-    .meta-week {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      padding: 0.2rem 0.8rem;
-    }
-
-    .meta-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-    }
-
-    .article-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1;
-      letter-spacing: 0.03em;
-      margin-bottom: 1.5rem;
-    }
-
-    .article-tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
+    .art-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem; color: var(--text-3);
       border: 1px solid var(--border);
-      padding: 0.25rem 0.6rem;
-      border-radius: 2px;
+      padding: 0.15rem 0.45rem; border-radius: 2px;
+    }
+
+    /* DIVIDER */
+    .art-divider {
+      position: relative; z-index: 1;
+      max-width: 820px; margin: 0 auto;
+      padding: 0 clamp(1.5rem,5vw,4rem);
+      border-top: 1px solid var(--border);
     }
 
     /* ARTICLE BODY */
-    .article-layout {
-      display: grid;
-      grid-template-columns: 1fr min(65ch, 100%) 1fr;
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
-    }
-
-    .article-body {
-      grid-column: 2;
-      padding: 4rem 0;
-      font-size: 1rem;
+    .art-body {
+      position: relative; z-index: 1;
+      max-width: 820px; margin: 0 auto;
+      padding: 3rem clamp(1.5rem,5vw,4rem) 6rem;
+      font-size: 0.98rem;
       line-height: 1.9;
-      color: #d8d8d8;
+      color: #c8d4e8;
     }
 
-    .article-body h1,
-    .article-body h2,
-    .article-body h3 {
-      font-family: 'Bebas Neue', cursive;
-      letter-spacing: 0.08em;
-      color: var(--text);
-      margin: 2.5rem 0 1rem;
+    .art-body h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 2.2rem;
+      letter-spacing: -0.02em; color: var(--text);
+      margin: 3rem 0 1.25rem;
       line-height: 1.2;
     }
-
-    .article-body h1 { font-size: 2.5rem; }
-    .article-body h2 {
-      font-size: 1.8rem;
+    .art-body h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1.55rem;
+      letter-spacing: -0.01em; color: var(--text);
+      margin: 2.5rem 0 1rem;
       padding-left: 1rem;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--blue);
+      line-height: 1.3;
     }
-    .article-body h3 {
-      font-size: 1.3rem;
-      color: var(--accent);
+    .art-body h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600; font-size: 1.1rem;
+      color: var(--blue); margin: 2rem 0 0.75rem;
+      letter-spacing: 0.01em;
     }
-
-    .article-body p { margin-bottom: 1.5rem; }
-
-    .article-body a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(232,255,71,0.3);
+    .art-body h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem; color: var(--text-2);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .art-body p { margin-bottom: 1.5rem; }
+    .art-body a {
+      color: var(--blue); text-decoration: none;
+      border-bottom: 1px solid rgba(14,165,233,0.3);
       transition: border-color 0.2s;
     }
-    .article-body a:hover { border-color: var(--accent); }
+    .art-body a:hover { border-color: var(--blue); }
+    .art-body strong { color: var(--text); font-weight: 700; }
+    .art-body em { color: var(--orange); font-style: normal; font-weight: 500; }
 
-    .article-body ul, .article-body ol {
-      margin: 1.5rem 0 1.5rem 1.5rem;
+    .art-body ul, .art-body ol {
+      margin: 1.25rem 0 1.5rem 1.5rem;
+    }
+    .art-body li {
+      margin-bottom: 0.6rem;
+      padding-left: 0.25rem;
+    }
+    .art-body ul li::marker { color: var(--blue); }
+    .art-body ol li::marker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em; color: var(--blue);
     }
 
-    .article-body li { margin-bottom: 0.5rem; }
-
-    .article-body blockquote {
-      border-left: 3px solid var(--accent);
-      padding: 1rem 1.5rem;
+    .art-body blockquote {
+      border-left: 3px solid var(--blue);
+      padding: 1.25rem 1.5rem;
       margin: 2rem 0;
       background: var(--surface);
-      color: var(--text-muted);
+      border-radius: 0 4px 4px 0;
+    }
+    .art-body blockquote p {
+      color: var(--text-2);
       font-style: italic;
+      margin-bottom: 0;
     }
 
-    .article-body code {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.85em;
+    .art-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em;
       background: var(--surface2);
-      padding: 0.15em 0.4em;
+      padding: 0.15em 0.45em;
       border-radius: 3px;
-      color: var(--accent);
+      color: var(--orange);
+      border: 1px solid var(--border);
     }
 
-    .article-body pre {
+    .art-body pre {
       background: var(--surface);
       border: 1px solid var(--border);
+      border-radius: 6px;
       padding: 1.5rem;
-      border-radius: 4px;
       overflow-x: auto;
       margin: 2rem 0;
+      position: relative;
+    }
+    .art-body pre::before {
+      content: 'PROMPT';
+      position: absolute; top: 0.75rem; right: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem; color: var(--text-3);
+      letter-spacing: 0.15em;
+    }
+    .art-body pre code {
+      background: none; border: none; padding: 0;
+      font-size: 0.83rem; color: var(--text-2);
+      line-height: 1.7;
     }
 
-    .article-body pre code {
-      background: none;
-      padding: 0;
-      font-size: 0.82rem;
-    }
-
-    .article-body hr {
+    .art-body hr {
       border: none;
       border-top: 1px solid var(--border);
       margin: 3rem 0;
     }
 
-    .article-body strong {
-      color: var(--text);
-      font-weight: 700;
+    /* TABLE */
+    .art-body table {
+      width: 100%; border-collapse: collapse;
+      margin: 2rem 0; font-size: 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
     }
-
-    .article-body table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 2rem 0;
-      font-size: 0.85rem;
-    }
-
-    .article-body th {
+    .art-body th {
       background: var(--surface);
-      color: var(--accent);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      padding: 0.75rem 1rem;
-      text-align: left;
+      color: var(--blue);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      padding: 0.75rem 1rem; text-align: left;
       border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
     }
-
-    .article-body td {
+    .art-body td {
       padding: 0.75rem 1rem;
       border-bottom: 1px solid var(--border);
-      color: var(--text-muted);
+      color: var(--text-2);
+      vertical-align: top;
     }
+    .art-body tr:last-child td { border-bottom: none; }
+    .art-body tr:hover td { background: var(--surface); }
 
     /* FOOTER */
-    .article-footer {
+    footer {
+      position: relative; z-index: 1;
       border-top: 1px solid var(--border);
-      padding: 2rem clamp(1.5rem, 5vw, 4rem);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      max-width: 820px; margin: 0 auto;
+      padding: 2.5rem clamp(1.5rem,5vw,4rem);
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .foot-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em;
+    }
+    .foot-logo em { color: var(--blue); font-style: normal; }
+    .foot-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem; color: var(--text-3); letter-spacing: 0.1em;
     }
 
-    .footer-logo {
-      font-family: 'Bebas Neue', cursive;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      font-size: 1.2rem;
-    }
-
-    .footer-text {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
-    }
-
-    /* ANIMATION */
+    /* ANIMS */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity:0; transform:translateY(14px); }
+      to   { opacity:1; transform:translateY(0); }
     }
+    .art-hero { animation: fadeUp 0.7s ease both; }
+    .art-body { animation: fadeUp 0.7s ease 0.12s both; }
 
-    .article-hero { animation: fadeUp 0.7s ease both; }
-    .article-body { animation: fadeUp 0.7s ease 0.15s both; }
-
-    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); }
   </style>
 </head>
 <body>
 
-  <div class="ticker-bar">
-    <div class="ticker-inner">
-      <span>GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦</span>
-      <span>GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦</span>
-    </div>
-  </div>
+  <header>
+    <a href="../index.html" class="logo-mark">GLOBAL<em>MKT</em>WEEKLY</a>
+    <a href="../index.html" class="back-link">← 記事一覧に戻る</a>
+  </header>
 
-  <nav>
-    <a href="../index.html" class="nav-logo">GLOBAL MKT WEEKLY</a>
-    <a href="../index.html" class="nav-back">← 記事一覧に戻る</a>
-  </nav>
-
-  <div class="article-hero">
-    <div class="article-meta">
-      <span class="meta-week">WEEK 02</span>
-      <span class="meta-date">2026-02-14</span>
+  <div class="art-hero">
+    <div class="art-meta">
+      <span class="art-label sig">Future Signal</span>
+      <span class="art-date">WEEK 02 — 2026-02-14</span>
     </div>
-    <h1 class="article-title">AI ROIの真実とAPACリーダーが語る「究極の増幅器」としてのAI：日本マーケターが勝つための戦略</h1>
-    <div class="article-tags">
-      <span class="tag">AI</span>
+    <h1 class="art-title">AI ROIの真実とAPACリーダーが語る「究極の増幅器」としてのAI：日本マーケターが勝つための戦略</h1>
+    <div class="art-tags"><span class="tag">AI</span>
 <span class="tag">Marketing</span>
 <span class="tag">ROI</span>
 <span class="tag">APAC</span>
 <span class="tag">MarTech</span>
-<span class="tag">Strategy</span>
-    </div>
+<span class="tag">Strategy</span></div>
   </div>
 
-  <div class="article-layout">
-    <article class="article-body">
-      <h2>🛑 エグゼクティブ・サマリー（今週の必読3選）</h2>
+  <div class="art-divider"></div>
+
+  <article class="art-body">
+    <h2>🛑 エグゼクティブ・サマリー（今週の必読3選）</h2>
 <ul>
 <li><strong>AI ROIの「自信低下」は成熟の証</strong>: 単なる生産性向上から「事業価値」への評価軸シフト。真のROIを出す企業は2倍以上のリターンを享受。</li>
 <li><strong>AIは「究極の増幅器」</strong>: APACのリーダーはAIを個人のスキル強化、大規模なメディアバイイング、ボトルネック解消に活用。人間は戦略と品質管理に集中すべき。</li>
@@ -450,12 +428,11 @@
 <li><strong>日本市場での勝機</strong>: 人手不足をAIで解消し、限られたリソースで最大の成果を出すための必須戦略。</li>
 </ol>
 
-    </article>
-  </div>
+  </article>
 
-  <footer class="article-footer">
-    <div class="footer-logo">GLOBAL MKT WEEKLY</div>
-    <div class="footer-text">毎週月曜日更新 — Powered by Google Drive + GitHub Pages</div>
+  <footer>
+    <div class="foot-logo">GLOBAL<em>MKT</em>WEEKLY</div>
+    <div class="foot-text">毎週月曜更新 — Powered by Google Drive + GitHub Pages</div>
   </footer>
 
 </body>
