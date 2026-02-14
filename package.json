@@ -1,0 +1,16 @@
+{
+  "name": "global-mkt-weekly",
+  "version": "1.0.0",
+  "description": "海外マーケティング事例 - 自動ビルドサイト",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js && npx serve docs"
+  },
+  "dependencies": {
+    "marked": "^12.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

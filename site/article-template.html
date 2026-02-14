@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>__ARTICLE_TITLE__ | GLOBAL MKT WEEKLY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --accent: #e8ff47;
+      --accent2: #ff4757;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --border: rgba(232, 255, 71, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* TICKER */
+    .ticker-bar {
+      background: var(--accent);
+      color: var(--bg);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      overflow: hidden;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-inner {
+      display: flex;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-inner span { padding: 0 3rem; }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* NAV */
+    nav {
+      padding: 1.2rem clamp(1.5rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--accent); }
+
+    /* ARTICLE HERO */
+    .article-hero {
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--border);
+      max-width: 900px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-week {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.2rem 0.8rem;
+    }
+
+    .meta-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .article-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* ARTICLE BODY */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr min(65ch, 100%) 1fr;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .article-body {
+      grid-column: 2;
+      padding: 4rem 0;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #d8d8d8;
+    }
+
+    .article-body h1,
+    .article-body h2,
+    .article-body h3 {
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin: 2.5rem 0 1rem;
+      line-height: 1.2;
+    }
+
+    .article-body h1 { font-size: 2.5rem; }
+    .article-body h2 {
+      font-size: 1.8rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+    .article-body h3 {
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+
+    .article-body p { margin-bottom: 1.5rem; }
+
+    .article-body a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232,255,71,0.3);
+      transition: border-color 0.2s;
+    }
+    .article-body a:hover { border-color: var(--accent); }
+
+    .article-body ul, .article-body ol {
+      margin: 1.5rem 0 1.5rem 1.5rem;
+    }
+
+    .article-body li { margin-bottom: 0.5rem; }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--surface);
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .article-body code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85em;
+      background: var(--surface2);
+      padding: 0.15em 0.4em;
+      border-radius: 3px;
+      color: var(--accent);
+    }
+
+    .article-body pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+
+    .article-body pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.82rem;
+    }
+
+    .article-body hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    .article-body strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.85rem;
+    }
+
+    .article-body th {
+      background: var(--surface);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-body td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+    .article-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .footer-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .article-hero { animation: fadeUp 0.7s ease both; }
+    .article-body { animation: fadeUp 0.7s ease 0.15s both; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <div class="ticker-bar">
+    <div class="ticker-inner">
+      <span>GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦</span>
+      <span>GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦</span>
+    </div>
+  </div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">GLOBAL MKT WEEKLY</a>
+    <a href="../index.html" class="nav-back">← 記事一覧に戻る</a>
+  </nav>
+
+  <div class="article-hero">
+    <div class="article-meta">
+      <span class="meta-week">WEEK __ARTICLE_WEEK__</span>
+      <span class="meta-date">__ARTICLE_DATE__</span>
+    </div>
+    <h1 class="article-title">__ARTICLE_TITLE__</h1>
+    <div class="article-tags">
+      __ARTICLE_TAGS__
+    </div>
+  </div>
+
+  <div class="article-layout">
+    <article class="article-body">
+      __ARTICLE_CONTENT__
+    </article>
+  </div>
+
+  <footer class="article-footer">
+    <div class="footer-logo">GLOBAL MKT WEEKLY</div>
+    <div class="footer-text">毎週月曜日更新 — Powered by Google Drive + GitHub Pages</div>
+  </footer>
+
+</body>
+</html>
