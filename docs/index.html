@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海外マーケティング事例 | GLOBAL MKT WEEKLY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --accent: #e8ff47;
+      --accent2: #ff4757;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --border: rgba(232, 255, 71, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-left {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .logo {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    .logo-en {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+
+    .logo-ja {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.3em;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    .header-right {
+      text-align: right;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .ticker-bar {
+      background: var(--accent);
+      color: var(--bg);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      overflow: hidden;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-inner {
+      display: flex;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-inner span {
+      padding: 0 3rem;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: end;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(3rem, 9vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      max-width: 40ch;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      border-left: 2px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+    }
+
+    .section-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* ── ARTICLES GRID ── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5px;
+      background: var(--border);
+    }
+
+    .article-card {
+      background: var(--bg);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.3s ease;
+    }
+
+    .article-card:hover {
+      background: var(--surface);
+    }
+
+    .article-card:hover::before {
+      height: 100%;
+    }
+
+    .article-card.featured {
+      grid-column: span 2;
+      background: var(--surface);
+    }
+
+    @media (max-width: 768px) {
+      .article-card.featured { grid-column: span 1; }
+    }
+
+    .card-week {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-week::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-card.featured .card-title {
+      font-size: 1.4rem;
+    }
+
+    .card-excerpt {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    .card-arrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.2s;
+    }
+
+    .article-card:hover .card-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 4rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      line-height: 2;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 6rem;
+      border-top: 1px solid var(--border);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .footer-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title, .hero-desc, .hero-stats {
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-desc { animation-delay: 0.1s; }
+    .hero-stats { animation-delay: 0.2s; }
+
+    .article-card {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .article-card:nth-child(1) { animation-delay: 0.05s; }
+    .article-card:nth-child(2) { animation-delay: 0.1s; }
+    .article-card:nth-child(3) { animation-delay: 0.15s; }
+    .article-card:nth-child(4) { animation-delay: 0.2s; }
+    .article-card:nth-child(5) { animation-delay: 0.25s; }
+    .article-card:nth-child(6) { animation-delay: 0.3s; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-inner">
+      <span>GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦</span>
+      <span>GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦ GLOBAL MKT WEEKLY ✦ 海外マーケティング事例 ✦ WEEKLY INSIGHTS ✦</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <span id="current-date">毎週月曜更新</span>
+    </div>
+    <div class="logo">
+      <span class="logo-en">GLOBAL MKT WEEKLY</span>
+      <span class="logo-ja">海外マーケティング事例</span>
+    </div>
+    <div class="header-right">
+      VOL.<span id="vol-num">001</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-tag">Latest Issue</div>
+      <h1 class="hero-title">
+        GLOBAL<br>
+        <em>MKT</em><br>
+        WEEKLY
+      </h1>
+    </div>
+    <div>
+      <p class="hero-desc">
+        世界中の最新マーケティング事例を毎週キュレーション。<br>
+        ブランド戦略、SNSキャンペーン、グロースハックなど、<br>
+        グローバルの最前線をお届けします。
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num" id="article-count">0</div>
+          <div class="stat-label">Articles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="week-count">0</div>
+          <div class="stat-label">Weeks</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+    <div class="section-header">
+      <div class="section-title">// LATEST REPORTS</div>
+      <div class="section-meta" id="update-meta">自動更新中</div>
+    </div>
+
+    <div class="articles-grid" id="articles-grid">
+      <!-- 記事カードはJSまたはビルド時に生成 -->
+      <div class="empty-state">
+        記事データを読み込み中...<br>
+        <span style="opacity:0.5">articles will appear here after setup</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">GLOBAL MKT WEEKLY</div>
+    <div class="footer-text">毎週月曜日更新 — Powered by Google Drive + GitHub Pages</div>
+  </footer>
+
+  <script>
+    // 日付表示
+    const now = new Date();
+    document.getElementById('current-date').textContent =
+      now.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    // 記事データ（ビルドスクリプトがここを自動更新）
+    const articles = [];
+
+    function renderArticles(articles) {
+      const grid = document.getElementById('articles-grid');
+      if (!articles || articles.length === 0) {
+        grid.innerHTML = '<div class="empty-state">まだ記事がありません<br><span style="opacity:0.5">add .md files to your Google Drive folder</span></div>';
+        return;
+      }
+
+      document.getElementById('article-count').textContent = articles.length;
+      document.getElementById('week-count').textContent = Math.ceil(articles.length);
+      document.getElementById('vol-num').textContent = String(articles.length).padStart(3, '0');
+      document.getElementById('update-meta').textContent =
+        `最終更新: ${articles[0]?.date || '—'}`;
+
+      grid.innerHTML = articles.map((a, i) => `
+        <a href="articles/${a.slug}.html" class="article-card ${i === 0 ? 'featured' : ''}">
+          <div class="card-week">WEEK ${a.week || String(articles.length - i).padStart(2, '0')}</div>
+          <div class="card-title">${a.title}</div>
+          <div class="card-excerpt">${a.excerpt}</div>
+          <div class="card-footer">
+            <div class="card-tags">
+              ${(a.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+            <span class="card-arrow">READ →</span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // データが注入されていればレンダリング
+    if (typeof articles !== 'string' || articles !== '__ARTICLES_DATA__') {
+      renderArticles(articles);
+    }
+  </script>
+</body>
+</html>
