@@ -3,25 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D2C AI戦略レポート | GLOBAL MKT WEEKLY</title>
+  <title>D2C戦略の武器庫 | GLOBAL MKT WEEKLY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:         #080d1a;
-      --bg2:        #0d1424;
-      --surface:    #0f1829;
-      --surface2:   #162035;
-      --blue:       #0ea5e9;
-      --blue-dim:   rgba(14,165,233,0.1);
-      --blue-glow:  rgba(14,165,233,0.3);
-      --orange:     #f97316;
-      --orange-dim: rgba(249,115,22,0.1);
-      --text:       #e8edf5;
-      --text-2:     #8899b4;
-      --text-3:     #4a5a72;
-      --border:     rgba(255,255,255,0.07);
-      --border-blue:rgba(14,165,233,0.22);
+      --navy:       #1A202C;
+      --blue:       #3182CE;
+      --blue-light: #EBF8FF;
+      --blue-mid:   #BEE3F8;
+      --orange:     #ED8936;
+      --orange-lt:  #FFFAF0;
+      --bg:         #F7FAFC;
+      --white:      #FFFFFF;
+      --gray-100:   #EDF2F7;
+      --gray-200:   #E2E8F0;
+      --gray-400:   #A0AEC0;
+      --gray-500:   #718096;
+      --gray-700:   #4A5568;
+      --text:       #2D3748;
+      --border:     #E2E8F0;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.07);
+      --shadow:     0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg:  0 10px 30px rgba(0,0,0,0.10);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -29,438 +33,381 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 300;
-      line-height: 1.75;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.8;
       min-height: 100vh;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(14,165,233,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(14,165,233,0.025) 1px, transparent 1px);
-      background-size: 52px 52px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    body::after {
-      content: '';
-      position: fixed;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 70%);
-      top: -250px; right: -250px;
-      pointer-events: none; z-index: 0;
     }
 
     /* HEADER */
     header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(8,13,26,0.88);
-      backdrop-filter: blur(20px);
+      background: var(--white);
       border-bottom: 1px solid var(--border);
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
-      height: 62px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .hdr {
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 clamp(1.25rem,4vw,2.5rem);
+      height: 64px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { display: flex; align-items: baseline; gap: 0.75rem; }
-    .logo-mark {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 1.05rem;
-      letter-spacing: 0.04em; color: var(--text);
-    }
-    .logo-mark em { color: var(--blue); font-style: normal; }
-    .logo-sub {
+    .logo { text-decoration: none; display: flex; flex-direction: column; gap: 0.05rem; }
+    .logo-ja { font-size: 0.85rem; font-weight: 900; color: var(--navy); letter-spacing: 0.04em; }
+    .logo-en {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.58rem; color: var(--text-3);
+      font-size: 0.55rem; color: var(--gray-400);
       letter-spacing: 0.15em; text-transform: uppercase;
     }
-    .live-badge {
+    .live {
       display: flex; align-items: center; gap: 0.4rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem; color: var(--text-2);
-      letter-spacing: 0.08em;
+      font-size: 0.75rem; color: var(--blue); font-weight: 500;
     }
-    .live-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--blue); box-shadow: 0 0 8px var(--blue);
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--blue);
       animation: blink 2s infinite;
     }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    @keyframes blink {
+      0%,100%{ box-shadow:0 0 0 0 rgba(49,130,206,0.45); }
+      50%{ box-shadow:0 0 0 5px rgba(49,130,206,0); }
+    }
 
     /* HERO */
+    .hero-wrap { background: var(--white); border-bottom: 1px solid var(--border); }
     .hero {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto;
-      padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(2.5rem,5vw,4rem);
+      max-width: 1160px; margin: 0 auto;
+      padding: clamp(2.5rem,6vw,4.5rem) clamp(1.25rem,4vw,2.5rem);
+      display: grid; grid-template-columns: 3fr 2fr;
+      gap: 3rem; align-items: start;
     }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem; color: var(--blue);
-      letter-spacing: 0.2em; text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid var(--border-blue);
-      border-radius: 2px; background: var(--blue-dim);
+    @media(max-width:768px){ .hero{ grid-template-columns:1fr; gap:2rem; } }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.22rem 0.7rem; border-radius: 3px;
+      margin-bottom: 1.1rem; width: fit-content;
     }
+    .hero-badge.signal { background: var(--blue-light); color: var(--blue); }
+    .hero-badge.update { background: var(--gray-100); color: var(--gray-500); }
+    .badge-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .signal .badge-dot { background: var(--blue); }
+    .update .badge-dot { background: var(--gray-400); }
+
     .hero-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      line-height: 1.05; letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
+      font-size: clamp(1.7rem,4vw,2.6rem);
+      font-weight: 900; line-height: 1.25;
+      letter-spacing: -0.025em; color: var(--navy);
+      margin-bottom: 1.1rem;
     }
-    .hero-title .b { color: var(--blue); }
-    .hero-title .o { color: var(--orange); }
-    .hero-desc {
-      font-size: 0.95rem; color: var(--text-2);
-      max-width: 52ch; line-height: 1.85;
-      margin-bottom: 3rem;
+    .hero-excerpt {
+      font-size: 0.93rem; color: var(--gray-700);
+      line-height: 1.85; margin-bottom: 1.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
-    .stat { display: flex; flex-direction: column; gap: 0.15rem; }
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 2rem;
-      color: var(--text); line-height: 1;
-    }
-    .stat-label {
+    .hero-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .hero-date {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem; color: var(--text-3);
-      letter-spacing: 0.15em; text-transform: uppercase;
+      font-size: 0.65rem; color: var(--gray-400); letter-spacing: 0.08em;
+    }
+    .hero-rt { font-size: 0.72rem; color: var(--gray-500); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--navy); color: var(--white);
+      font-size: 0.85rem; font-weight: 700;
+      padding: 0.75rem 1.75rem; border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .btn:hover { background: var(--blue); transform: translateY(-1px); }
+
+    /* STATS BOX */
+    .stats-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .stat-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-row:first-child { padding-top: 0; }
+    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-lbl { font-size: 0.8rem; color: var(--gray-500); font-weight: 500; }
+    .stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--navy); line-height: 1;
+    }
+    .stat-val sup {
+      font-size: 0.65rem; color: var(--blue);
+      font-family: 'Noto Sans JP', sans-serif;
+      margin-left: 0.2rem; vertical-align: super;
+    }
+
+    /* MAIN */
+    .main {
+      max-width: 1160px; margin: 0 auto;
+      padding: 2.5rem clamp(1.25rem,4vw,2.5rem) 6rem;
     }
 
     /* FILTER */
-    .filter-bar {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 clamp(1.5rem,5vw,4rem) 2rem;
-      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    .filters {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 2rem; flex-wrap: wrap;
     }
-    .filter-btn {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem; letter-spacing: 0.1em;
-      padding: 0.38rem 1rem; border-radius: 2px;
-      border: 1px solid var(--border);
-      background: transparent; color: var(--text-2);
-      cursor: pointer; transition: all 0.2s;
-      text-transform: uppercase;
+    .fl { font-size: 0.72rem; color: var(--gray-400); font-weight: 500; margin-right: 0.25rem; }
+    .fb {
+      font-size: 0.75rem; font-weight: 700;
+      padding: 0.35rem 1.1rem; border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: var(--white); color: var(--gray-500);
+      cursor: pointer; transition: all 0.18s;
+      font-family: 'Noto Sans JP', sans-serif;
     }
-    .filter-btn:hover, .filter-btn.active {
-      border-color: var(--blue); color: var(--blue); background: var(--blue-dim);
-    }
-    .filter-btn.f-orange:hover, .filter-btn.f-orange.active {
-      border-color: var(--orange); color: var(--orange); background: var(--orange-dim);
-    }
+    .fb:hover { border-color: var(--blue); color: var(--blue); }
+    .fb.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
+    .fb.fs.active { background: var(--blue); border-color: var(--blue); }
+    .fb.fu.active { background: var(--gray-500); border-color: var(--gray-500); }
 
-    /* ARTICLES */
-    .articles-section {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 clamp(1.5rem,5vw,4rem) 7rem;
-    }
-    .sec-hdr {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 1.5rem;
-    }
-    .sec-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem; color: var(--text-3);
-      letter-spacing: 0.2em; text-transform: uppercase;
+    /* SEC TITLE */
+    .st {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 1.25rem;
       display: flex; align-items: center; gap: 0.75rem;
     }
-    .sec-title::before {
-      content: ''; width: 2rem; height: 1px; background: var(--blue);
-    }
-    .sec-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem; color: var(--text-3);
-    }
+    .st::after { content:''; flex:1; height:1px; background:var(--border); }
 
+    /* GRID */
     .grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1px;
-      background: var(--border);
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.25rem;
     }
+    @media(max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:560px){ .grid{ grid-template-columns:1fr; } }
 
+    /* CARD */
     .card {
-      background: var(--bg);
-      padding: 2rem; position: relative;
-      overflow: hidden; transition: background 0.25s;
-      text-decoration: none; color: inherit;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.5rem;
       display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      position: relative;
     }
-    .card:hover { background: var(--surface); }
+    .card.cs { border-top: 3px solid var(--blue); }
+    .card.cu { border-top: 3px solid var(--gray-400); }
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+      border-color: var(--blue-mid);
+    }
 
-    .card-featured { grid-column: span 8; background: var(--surface); padding: 2.5rem; }
-    .card-half     { grid-column: span 4; }
-    .card-third    { grid-column: span 4; }
-    .card-wide     { grid-column: span 6; }
+    .clbl {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.18rem 0.55rem; border-radius: 3px;
+      margin-bottom: 0.85rem; width: fit-content;
+    }
+    .clbl.signal { background: var(--blue-light); color: var(--blue); }
+    .clbl.update { background: var(--gray-100); color: var(--gray-500); }
+    .clbl-dot { width: 4px; height: 4px; border-radius: 50%; }
+    .signal .clbl-dot { background: var(--blue); }
+    .update .clbl-dot { background: var(--gray-400); }
 
-    @media (max-width: 900px) {
-      .card-featured, .card-half, .card-third, .card-wide { grid-column: span 12; }
-    }
-
-    /* CARD SHINE */
-    .card::before {
-      content: ''; position: absolute; inset: 0;
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .card.sig::before { background: linear-gradient(135deg, rgba(14,165,233,0.08) 0%, transparent 55%); }
-    .card.upd::before { background: linear-gradient(135deg, rgba(249,115,22,0.08) 0%, transparent 55%); }
-    .card:hover::before { opacity: 1; }
-
-    /* TOP LINE */
-    .card::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.35s ease;
-    }
-    .card.sig::after { background: var(--blue); }
-    .card.upd::after { background: var(--orange); }
-    .card:hover::after { transform: scaleX(1); }
-
-    /* LABEL */
-    .clabel {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem; letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 0.22rem 0.55rem; border-radius: 2px;
-      margin-bottom: 1.2rem; width: fit-content;
-    }
-    .clabel.sig {
-      color: var(--blue); background: var(--blue-dim);
-      border: 1px solid var(--border-blue);
-    }
-    .clabel.upd {
-      color: var(--orange); background: var(--orange-dim);
-      border: 1px solid rgba(249,115,22,0.22);
-    }
-    .clabel::before {
-      content: ''; width: 4px; height: 4px; border-radius: 50%;
-    }
-    .clabel.sig::before { background: var(--blue); }
-    .clabel.upd::before { background: var(--orange); }
-
-    /* CARD TEXT */
     .ctitle {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 1rem;
-      line-height: 1.4; letter-spacing: -0.01em;
-      margin-bottom: 0.75rem; color: var(--text);
+      font-size: 0.96rem; font-weight: 700;
+      line-height: 1.5; letter-spacing: -0.01em;
+      color: var(--navy); margin-bottom: 0.7rem;
     }
-    .card-featured .ctitle { font-size: 1.5rem; margin-bottom: 1rem; }
-    .cexcerpt {
-      font-size: 0.82rem; color: var(--text-2);
-      line-height: 1.78; flex: 1;
+    .cexc {
+      font-size: 0.82rem; color: var(--gray-500);
+      line-height: 1.75; flex: 1;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .card-featured .cexcerpt { -webkit-line-clamp: 5; font-size: 0.88rem; }
-
     .cfoot {
-      margin-top: 1.5rem; padding-top: 1rem;
+      margin-top: 1.1rem; padding-top: 0.9rem;
       border-top: 1px solid var(--border);
       display: flex; align-items: center;
       justify-content: space-between; gap: 0.5rem;
-      flex-wrap: wrap;
     }
     .cdate {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem; color: var(--text-3);
+      font-size: 0.6rem; color: var(--gray-400);
     }
-    .ctags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-    .tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.56rem; color: var(--text-3);
-      border: 1px solid var(--border);
-      padding: 0.12rem 0.4rem; border-radius: 2px;
+    .crt { font-size: 0.68rem; color: var(--gray-400); }
+    .carr {
+      font-size: 0.72rem; font-weight: 700; color: var(--blue);
+      opacity: 0; transform: translateX(-4px); transition: all 0.18s;
     }
-    .cread {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem; color: var(--text-3);
-      opacity: 0; transform: translateX(-6px);
-      transition: all 0.2s; white-space: nowrap;
-    }
-    .card:hover .cread {
-      opacity: 1; transform: translateX(0);
-    }
-    .card.sig:hover .cread { color: var(--blue); }
-    .card.upd:hover .cread { color: var(--orange); }
+    .card:hover .carr { opacity:1; transform:translateX(0); }
 
     /* EMPTY */
     .empty {
-      grid-column: 1/-1; padding: 5rem 2rem;
-      text-align: center;
+      grid-column: 1/-1; text-align: center; padding: 5rem 2rem;
     }
-    .empty-ring {
-      width: 50px; height: 50px;
-      border: 1px solid var(--border); border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-3); font-size: 1.2rem;
-    }
-    .empty h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 600; font-size: 1rem;
-      color: var(--text-2); margin-bottom: 0.5rem;
-    }
-    .empty p {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem; color: var(--text-3);
-      letter-spacing: 0.1em;
-    }
+    .empty h3 { font-size:1rem; font-weight:700; color:var(--gray-500); margin-bottom:0.5rem; }
+    .empty p { font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gray-400); letter-spacing:0.1em; }
 
     /* FOOTER */
-    footer {
-      position: relative; z-index: 1;
-      border-top: 1px solid var(--border);
-      max-width: 1200px; margin: 0 auto;
-      padding: 2.5rem clamp(1.5rem,5vw,4rem);
+    footer { background: var(--navy); }
+    .ftr {
+      max-width: 1160px; margin: 0 auto;
+      padding: 2.5rem clamp(1.25rem,4vw,2.5rem);
       display: flex; justify-content: space-between;
       align-items: center; flex-wrap: wrap; gap: 1rem;
     }
-    .foot-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 0.9rem;
-      letter-spacing: 0.04em;
-    }
-    .foot-logo em { color: var(--blue); font-style: normal; }
-    .foot-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.58rem; color: var(--text-3); letter-spacing: 0.1em;
+    .flogo { font-size:0.95rem; font-weight:900; color:var(--white); letter-spacing:0.04em; }
+    .fsub {
+      font-family:'JetBrains Mono',monospace;
+      font-size:0.58rem; color:rgba(255,255,255,0.35); letter-spacing:0.12em;
     }
 
-    /* ANIMS */
     @keyframes fadeUp {
-      from { opacity:0; transform:translateY(14px); }
-      to   { opacity:1; transform:translateY(0); }
+      from{ opacity:0; transform:translateY(12px); }
+      to  { opacity:1; transform:translateY(0); }
     }
-    .hero            { animation: fadeUp 0.7s ease both; }
-    .filter-bar      { animation: fadeUp 0.7s ease 0.08s both; }
-    .articles-section{ animation: fadeUp 0.7s ease 0.14s both; }
+    .hero-wrap { animation: fadeUp 0.6s ease both; }
+    .main      { animation: fadeUp 0.6s ease 0.1s both; }
 
-    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--blue); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">
-      <div class="logo-mark">GLOBAL<em>MKT</em>WEEKLY</div>
-      <div class="logo-sub">海外マーケティング事例</div>
-    </div>
-    <div class="live-badge">
-      <div class="live-dot"></div>
-      毎週月曜更新
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="eyebrow">D2C Strategic Intelligence</div>
-    <h1 class="hero-title">
-      世界のマーケティング<br>
-      <span class="b">最前線</span>を、<br>
-      <span class="o">武器</span>に変える。
-    </h1>
-    <p class="hero-desc">
-      海外D2Cブランドの戦略・AIツール活用・グロースハックを毎週キュレーション。<br>
-      日本市場での実装ステップ付きで、月曜朝に届ける意思決定支援レポート。
-    </p>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num" id="cnt-all">0</div>
-        <div class="stat-label">Reports</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" id="cnt-sig">0</div>
-        <div class="stat-label">Future Signals</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" id="cnt-upd">0</div>
-        <div class="stat-label">Update Logs</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="filter('all',this)">ALL</button>
-    <button class="filter-btn"        onclick="filter('sig',this)">Future Signal</button>
-    <button class="filter-btn f-orange" onclick="filter('upd',this)">Update Log</button>
+<header>
+  <div class="hdr">
+    <a href="#" class="logo">
+      <span class="logo-ja">D2C戦略の武器庫</span>
+      <span class="logo-en">Global MKT Weekly</span>
+    </a>
+    <div class="live"><div class="dot"></div>毎週月曜更新</div>
   </div>
+</header>
 
-  <section class="articles-section">
-    <div class="sec-hdr">
-      <div class="sec-title">Latest Reports</div>
-      <div class="sec-meta" id="meta"></div>
+<div class="hero-wrap">
+  <div class="hero">
+    <div>
+      <div class="hero-badge signal" id="hbadge"><div class="badge-dot"></div>未来の兆し — Future Signal</div>
+      <h1 class="hero-title" id="htitle">最新レポートを読み込み中...</h1>
+      <p class="hero-excerpt" id="hexc">記事データを取得しています。</p>
+      <div class="hero-meta">
+        <span class="hero-date" id="hdate"></span>
+        <span class="hero-rt" id="hrt"></span>
+      </div>
+      <a href="#" class="btn" id="hlink">記事を読む →</a>
     </div>
-    <div class="grid" id="grid">
-      <div class="empty">
-        <div class="empty-ring">◎</div>
-        <h3>記事を読み込み中...</h3>
-        <p>Loading from Google Drive</p>
+    <div class="stats-box">
+      <div class="stat-row">
+        <span class="stat-lbl">総レポート数</span>
+        <span class="stat-val" id="ca">0<sup>本</sup></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-lbl">未来の兆し</span>
+        <span class="stat-val" id="cs">0<sup>本</sup></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-lbl">速報</span>
+        <span class="stat-val" id="cu">0<sup>本</sup></span>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <footer>
-    <div class="foot-logo">GLOBAL<em>MKT</em>WEEKLY</div>
-    <div class="foot-text">毎週月曜更新 — Powered by Google Drive + GitHub Pages</div>
-  </footer>
+<div class="main">
+  <div class="filters">
+    <span class="fl">絞り込み：</span>
+    <button class="fb active" onclick="doFilter('all',this)">すべて</button>
+    <button class="fb fs" onclick="doFilter('signal',this)">未来の兆し</button>
+    <button class="fb fu" onclick="doFilter('update',this)">速報</button>
+  </div>
+  <div class="st">最新レポート一覧</div>
+  <div class="grid" id="grid">
+    <div class="empty"><h3>記事を読み込み中...</h3><p>Loading from Google Drive</p></div>
+  </div>
+</div>
 
-  <script>
-    const articles = __ARTICLES_DATA__;
+<footer>
+  <div class="ftr">
+    <div class="flogo">D2C戦略の武器庫</div>
+    <div class="fsub">毎週月曜更新 — Powered by Google Drive + GitHub Pages</div>
+  </div>
+</footer>
 
-    function getType(a) {
-      const s = (a.title + ' ' + (a.tags||[]).join(' ')).toLowerCase();
-      return (s.includes('update')||s.includes('アップデート')||s.includes('ログ')) ? 'upd' : 'sig';
+<script>
+  const articles = __ARTICLES_DATA__;
+
+  function getType(a){
+    const s=(a.title+' '+(a.tags||[]).join(' ')).toLowerCase();
+    return (s.includes('update')||s.includes('アップデート')||s.includes('速報')||s.includes('ログ'))?'update':'signal';
+  }
+  function rt(exc){ return `読了 ${Math.max(2,Math.round((exc||'').length/400))}分`; }
+
+  function renderHero(a){
+    if(!a)return;
+    const t=getType(a);
+    const b=document.getElementById('hbadge');
+    b.className='hero-badge '+t;
+    b.innerHTML=`<div class="badge-dot"></div>${t==='signal'?'未来の兆し — Future Signal':'速報 — Update Log'}`;
+    document.getElementById('htitle').textContent=a.title;
+    document.getElementById('hexc').textContent=a.excerpt;
+    document.getElementById('hdate').textContent=a.date;
+    document.getElementById('hrt').textContent=rt(a.excerpt);
+    document.getElementById('hlink').href=`articles/${a.slug}.html`;
+  }
+
+  function render(list){
+    const g=document.getElementById('grid');
+    if(!list||!list.length){
+      g.innerHTML=`<div class="empty"><h3>まだ記事がありません</h3><p>Add .md files to your Google Drive folder</p></div>`;
+      return;
     }
+    let sig=0,upd=0;
+    g.innerHTML=list.map(a=>{
+      const t=getType(a);
+      if(t==='signal')sig++;else upd++;
+      return `<a href="articles/${a.slug}.html" class="card c${t[0]}">
+        <div class="clbl ${t}"><div class="clbl-dot"></div>${t==='signal'?'未来の兆し':'速報'}</div>
+        <div class="ctitle">${a.title}</div>
+        <div class="cexc">${a.excerpt}</div>
+        <div class="cfoot">
+          <span class="cdate">${a.date}</span>
+          <span class="crt">${rt(a.excerpt)}</span>
+          <span class="carr">読む →</span>
+        </div>
+      </a>`;
+    }).join('');
+    document.getElementById('ca').innerHTML=`${list.length}<sup>本</sup>`;
+    document.getElementById('cs').innerHTML=`${sig}<sup>本</sup>`;
+    document.getElementById('cu').innerHTML=`${upd}<sup>本</sup>`;
+  }
 
-    function render(list) {
-      const grid = document.getElementById('grid');
-      if (!list || !list.length) {
-        grid.innerHTML = `<div class="empty"><div class="empty-ring">◎</div><h3>まだ記事がありません</h3><p>Add .md files to your Google Drive folder</p></div>`;
-        return;
-      }
-      let sig=0, upd=0;
-      grid.innerHTML = list.map((a,i) => {
-        const t = getType(a);
-        if(t==='sig') sig++; else upd++;
-        const sz = i===0 ? 'card-featured' : (i<=2 ? 'card-wide' : 'card-third');
-        const tags = (a.tags||[]).slice(0,3).map(x=>`<span class="tag">${x}</span>`).join('');
-        return `<a href="articles/${a.slug}.html" class="card ${sz} ${t}">
-          <div class="clabel ${t}">${t==='sig'?'Future Signal':'Update Log'}</div>
-          <div class="ctitle">${a.title}</div>
-          <div class="cexcerpt">${a.excerpt}</div>
-          <div class="cfoot">
-            <span class="cdate">${a.date}</span>
-            <div class="ctags">${tags}</div>
-            <span class="cread">READ →</span>
-          </div>
-        </a>`;
-      }).join('');
-      document.getElementById('cnt-all').textContent = list.length;
-      document.getElementById('cnt-sig').textContent = sig;
-      document.getElementById('cnt-upd').textContent = upd;
-      document.getElementById('meta').textContent = list[0]?.date ? '最終更新: '+list[0].date : '';
-    }
+  function doFilter(type,btn){
+    document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=type==='all'?articles:articles.filter(a=>getType(a)===type);
+    renderHero(f[0]);
+    render(f.slice(1));
+  }
 
-    function filter(type, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      render(type==='all' ? articles : articles.filter(a=>getType(a)===type));
-    }
-
-    if (typeof articles !== 'string') render(articles);
-  </script>
+  if(typeof articles!=='string'){ renderHero(articles[0]); render(articles.slice(1)); }
+</script>
 </body>
 </html>
