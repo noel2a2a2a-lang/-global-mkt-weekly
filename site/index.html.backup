@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D2C戦略の武器庫 | GLOBAL MKT WEEKLY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #1A202C;
+      --blue:       #3182CE;
+      --blue-light: #EBF8FF;
+      --blue-mid:   #BEE3F8;
+      --orange:     #ED8936;
+      --orange-lt:  #FFFAF0;
+      --bg:         #F7FAFC;
+      --white:      #FFFFFF;
+      --gray-100:   #EDF2F7;
+      --gray-200:   #E2E8F0;
+      --gray-400:   #A0AEC0;
+      --gray-500:   #718096;
+      --gray-700:   #4A5568;
+      --text:       #2D3748;
+      --border:     #E2E8F0;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.07);
+      --shadow:     0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg:  0 10px 30px rgba(0,0,0,0.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .hdr {
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 clamp(1.25rem,4vw,2.5rem);
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { text-decoration: none; display: flex; flex-direction: column; gap: 0.05rem; }
+    .logo-ja { font-size: 0.85rem; font-weight: 900; color: var(--navy); letter-spacing: 0.04em; }
+    .logo-en {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem; color: var(--gray-400);
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .live {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem; color: var(--blue); font-weight: 500;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--blue);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink {
+      0%,100%{ box-shadow:0 0 0 0 rgba(49,130,206,0.45); }
+      50%{ box-shadow:0 0 0 5px rgba(49,130,206,0); }
+    }
+
+    /* HERO */
+    .hero-wrap { background: var(--white); border-bottom: 1px solid var(--border); }
+    .hero {
+      max-width: 1160px; margin: 0 auto;
+      padding: clamp(2.5rem,6vw,4.5rem) clamp(1.25rem,4vw,2.5rem);
+      display: grid; grid-template-columns: 3fr 2fr;
+      gap: 3rem; align-items: start;
+    }
+    @media(max-width:768px){ .hero{ grid-template-columns:1fr; gap:2rem; } }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.22rem 0.7rem; border-radius: 3px;
+      margin-bottom: 1.1rem; width: fit-content;
+    }
+    .hero-badge.signal { background: var(--blue-light); color: var(--blue); }
+    .hero-badge.update { background: var(--gray-100); color: var(--gray-500); }
+    .badge-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .signal .badge-dot { background: var(--blue); }
+    .update .badge-dot { background: var(--gray-400); }
+
+    .hero-title {
+      font-size: clamp(1.7rem,4vw,2.6rem);
+      font-weight: 900; line-height: 1.25;
+      letter-spacing: -0.025em; color: var(--navy);
+      margin-bottom: 1.1rem;
+    }
+    .hero-excerpt {
+      font-size: 0.93rem; color: var(--gray-700);
+      line-height: 1.85; margin-bottom: 1.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .hero-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .hero-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: var(--gray-400); letter-spacing: 0.08em;
+    }
+    .hero-rt { font-size: 0.72rem; color: var(--gray-500); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--navy); color: var(--white);
+      font-size: 0.85rem; font-weight: 700;
+      padding: 0.75rem 1.75rem; border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .btn:hover { background: var(--blue); transform: translateY(-1px); }
+
+    /* STATS BOX */
+    .stats-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .stat-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-row:first-child { padding-top: 0; }
+    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-lbl { font-size: 0.8rem; color: var(--gray-500); font-weight: 500; }
+    .stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--navy); line-height: 1;
+    }
+    .stat-val sup {
+      font-size: 0.65rem; color: var(--blue);
+      font-family: 'Noto Sans JP', sans-serif;
+      margin-left: 0.2rem; vertical-align: super;
+    }
+
+    /* MAIN */
+    .main {
+      max-width: 1160px; margin: 0 auto;
+      padding: 2.5rem clamp(1.25rem,4vw,2.5rem) 6rem;
+    }
+
+    /* FILTER */
+    .filters {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .fl { font-size: 0.72rem; color: var(--gray-400); font-weight: 500; margin-right: 0.25rem; }
+    .fb {
+      font-size: 0.75rem; font-weight: 700;
+      padding: 0.35rem 1.1rem; border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: var(--white); color: var(--gray-500);
+      cursor: pointer; transition: all 0.18s;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .fb:hover { border-color: var(--blue); color: var(--blue); }
+    .fb.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
+    .fb.fs.active { background: var(--blue); border-color: var(--blue); }
+    .fb.fu.active { background: var(--gray-500); border-color: var(--gray-500); }
+
+    /* SEC TITLE */
+    .st {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .st::after { content:''; flex:1; height:1px; background:var(--border); }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.25rem;
+    }
+    @media(max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:560px){ .grid{ grid-template-columns:1fr; } }
+
+    /* CARD */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.5rem;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .card.cs { border-top: 3px solid var(--blue); }
+    .card.cu { border-top: 3px solid var(--gray-400); }
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+      border-color: var(--blue-mid);
+    }
+
+    .clbl {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.18rem 0.55rem; border-radius: 3px;
+      margin-bottom: 0.85rem; width: fit-content;
+    }
+    .clbl.signal { background: var(--blue-light); color: var(--blue); }
+    .clbl.update { background: var(--gray-100); color: var(--gray-500); }
+    .clbl-dot { width: 4px; height: 4px; border-radius: 50%; }
+    .signal .clbl-dot { background: var(--blue); }
+    .update .clbl-dot { background: var(--gray-400); }
+
+    .ctitle {
+      font-size: 0.96rem; font-weight: 700;
+      line-height: 1.5; letter-spacing: -0.01em;
+      color: var(--navy); margin-bottom: 0.7rem;
+    }
+    .cexc {
+      font-size: 0.82rem; color: var(--gray-500);
+      line-height: 1.75; flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .cfoot {
+      margin-top: 1.1rem; padding-top: 0.9rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 0.5rem;
+    }
+    .cdate {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem; color: var(--gray-400);
+    }
+    .crt { font-size: 0.68rem; color: var(--gray-400); }
+    .carr {
+      font-size: 0.72rem; font-weight: 700; color: var(--blue);
+      opacity: 0; transform: translateX(-4px); transition: all 0.18s;
+    }
+    .card:hover .carr { opacity:1; transform:translateX(0); }
+
+    /* EMPTY */
+    .empty {
+      grid-column: 1/-1; text-align: center; padding: 5rem 2rem;
+    }
+    .empty h3 { font-size:1rem; font-weight:700; color:var(--gray-500); margin-bottom:0.5rem; }
+    .empty p { font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gray-400); letter-spacing:0.1em; }
+
+    /* FOOTER */
+    footer { background: var(--navy); }
+    .ftr {
+      max-width: 1160px; margin: 0 auto;
+      padding: 2.5rem clamp(1.25rem,4vw,2.5rem);
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .flogo { font-size:0.95rem; font-weight:900; color:var(--white); letter-spacing:0.04em; }
+    .fsub {
+      font-family:'JetBrains Mono',monospace;
+      font-size:0.58rem; color:rgba(255,255,255,0.35); letter-spacing:0.12em;
+    }
+
+    @keyframes fadeUp {
+      from{ opacity:0; transform:translateY(12px); }
+      to  { opacity:1; transform:translateY(0); }
+    }
+    .hero-wrap { animation: fadeUp 0.6s ease both; }
+    .main      { animation: fadeUp 0.6s ease 0.1s both; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hdr">
+    <a href="#" class="logo">
+      <span class="logo-ja">D2C戦略の武器庫</span>
+      <span class="logo-en">Global MKT Weekly</span>
+    </a>
+    <div class="live"><div class="dot"></div>毎週月曜更新</div>
+  </div>
+</header>
+
+<div class="hero-wrap">
+  <div class="hero">
+    <div>
+      <div class="hero-badge signal" id="hbadge"><div class="badge-dot"></div>未来の兆し — Future Signal</div>
+      <h1 class="hero-title" id="htitle">最新レポートを読み込み中...</h1>
+      <p class="hero-excerpt" id="hexc">記事データを取得しています。</p>
+      <div class="hero-meta">
+        <span class="hero-date" id="hdate"></span>
+        <span class="hero-rt" id="hrt"></span>
+      </div>
+      <a href="#" class="btn" id="hlink">記事を読む →</a>
+    </div>
+    <div class="stats-box">
+      <div class="stat-row">
+        <span class="stat-lbl">総レポート数</span>
+        <span class="stat-val" id="ca">0<sup>本</sup></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-lbl">未来の兆し</span>
+        <span class="stat-val" id="cs">0<sup>本</sup></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-lbl">速報</span>
+        <span class="stat-val" id="cu">0<sup>本</sup></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="filters">
+    <span class="fl">絞り込み：</span>
+    <button class="fb active" onclick="doFilter('all',this)">すべて</button>
+    <button class="fb fs" onclick="doFilter('signal',this)">未来の兆し</button>
+    <button class="fb fu" onclick="doFilter('update',this)">速報</button>
+  </div>
+  <div class="st">最新レポート一覧</div>
+  <div class="grid" id="grid">
+    <div class="empty"><h3>記事を読み込み中...</h3><p>Loading from Google Drive</p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="ftr">
+    <div class="flogo">D2C戦略の武器庫</div>
+    <div class="fsub">毎週月曜更新 — Powered by Google Drive + GitHub Pages</div>
+  </div>
+</footer>
+
+<script>
+  const articles = __ARTICLES_DATA__;
+
+  function getType(a){
+    const s=(a.title+' '+(a.tags||[]).join(' ')).toLowerCase();
+    return (s.includes('update')||s.includes('アップデート')||s.includes('速報')||s.includes('ログ'))?'update':'signal';
+  }
+  function rt(exc){ return `読了 ${Math.max(2,Math.round((exc||'').length/400))}分`; }
+
+  function renderHero(a){
+    if(!a)return;
+    const t=getType(a);
+    const b=document.getElementById('hbadge');
+    b.className='hero-badge '+t;
+    b.innerHTML=`<div class="badge-dot"></div>${t==='signal'?'未来の兆し — Future Signal':'速報 — Update Log'}`;
+    document.getElementById('htitle').textContent=a.title;
+    document.getElementById('hexc').textContent=a.excerpt;
+    document.getElementById('hdate').textContent=a.date;
+    document.getElementById('hrt').textContent=rt(a.excerpt);
+    document.getElementById('hlink').href=`articles/${a.slug}.html`;
+  }
+
+  function render(list){
+    const g=document.getElementById('grid');
+    if(!list||!list.length){
+      g.innerHTML=`<div class="empty"><h3>まだ記事がありません</h3><p>Add .md files to your Google Drive folder</p></div>`;
+      return;
+    }
+    let sig=0,upd=0;
+    g.innerHTML=list.map(a=>{
+      const t=getType(a);
+      if(t==='signal')sig++;else upd++;
+      return `<a href="articles/${a.slug}.html" class="card c${t[0]}">
+        <div class="clbl ${t}"><div class="clbl-dot"></div>${t==='signal'?'未来の兆し':'速報'}</div>
+        <div class="ctitle">${a.title}</div>
+        <div class="cexc">${a.excerpt}</div>
+        <div class="cfoot">
+          <span class="cdate">${a.date}</span>
+          <span class="crt">${rt(a.excerpt)}</span>
+          <span class="carr">読む →</span>
+        </div>
+      </a>`;
+    }).join('');
+    document.getElementById('ca').innerHTML=`${list.length}<sup>本</sup>`;
+    document.getElementById('cs').innerHTML=`${sig}<sup>本</sup>`;
+    document.getElementById('cu').innerHTML=`${upd}<sup>本</sup>`;
+  }
+
+  function doFilter(type,btn){
+    document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=type==='all'?articles:articles.filter(a=>getType(a)===type);
+    renderHero(f[0]);
+    render(f.slice(1));
+  }
+
+  if(typeof articles!=='string'){ renderHero(articles[0]); render(articles.slice(1)); }
+</script>
+</body>
+</html>

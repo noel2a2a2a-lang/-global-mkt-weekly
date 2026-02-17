@@ -3,30 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D2C戦略の武器庫 | GLOBAL MKT WEEKLY</title>
+  <title>D2C戦略の武器庫 | 海外マーケティング事例週報</title>
+  <meta name="description" content="競合が気づく前に、海外の勝ちパターンを手に入れる。Meta・TikTok・Shopifyなど、D2C現場で使える戦略を毎週月曜に届ける分析レポート。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy:       #1A202C;
-      --blue:       #3182CE;
-      --blue-light: #EBF8FF;
-      --blue-mid:   #BEE3F8;
-      --orange:     #ED8936;
-      --orange-lt:  #FFFAF0;
-      --bg:         #F7FAFC;
-      --white:      #FFFFFF;
-      --gray-100:   #EDF2F7;
-      --gray-200:   #E2E8F0;
-      --gray-400:   #A0AEC0;
-      --gray-500:   #718096;
-      --gray-700:   #4A5568;
-      --text:       #2D3748;
-      --border:     #E2E8F0;
-      --shadow-sm:  0 1px 3px rgba(0,0,0,0.07);
-      --shadow:     0 4px 12px rgba(0,0,0,0.08);
-      --shadow-lg:  0 10px 30px rgba(0,0,0,0.10);
+      --navy:        #1A202C;
+      --navy-light:  #2D3748;
+      --blue:        #3182CE;
+      --blue-light:  #EBF8FF;
+      --blue-mid:    #BEE3F8;
+      --blue-dark:   #2B6CB0;
+      --orange:      #ED8936;
+      --orange-lt:   #FFFAF0;
+      --bg:          #F7FAFC;
+      --white:       #FFFFFF;
+      --gray-100:    #EDF2F7;
+      --gray-200:    #E2E8F0;
+      --gray-400:    #A0AEC0;
+      --gray-500:    #718096;
+      --gray-700:    #4A5568;
+      --text:        #2D3748;
+      --border:      #E2E8F0;
+      --shadow-sm:   0 1px 3px rgba(0,0,0,0.07);
+      --shadow:      0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg:   0 10px 30px rgba(0,0,0,0.12);
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -39,7 +43,7 @@
       min-height: 100vh;
     }
 
-    /* HEADER */
+    /* ── HEADER ── */
     header {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -53,7 +57,10 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .logo { text-decoration: none; display: flex; flex-direction: column; gap: 0.05rem; }
-    .logo-ja { font-size: 0.85rem; font-weight: 900; color: var(--navy); letter-spacing: 0.04em; }
+    .logo-ja {
+      font-size: 0.95rem; font-weight: 900;
+      color: var(--navy); letter-spacing: 0.02em;
+    }
     .logo-en {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.55rem; color: var(--gray-400);
@@ -69,105 +76,116 @@
       animation: blink 2s infinite;
     }
     @keyframes blink {
-      0%,100%{ box-shadow:0 0 0 0 rgba(49,130,206,0.45); }
-      50%{ box-shadow:0 0 0 5px rgba(49,130,206,0); }
+      0%,100%{ box-shadow: 0 0 0 0 rgba(49,130,206,0.45); }
+      50%{ box-shadow: 0 0 0 5px rgba(49,130,206,0); }
     }
 
-    /* HERO */
-    .hero-wrap { background: var(--white); border-bottom: 1px solid var(--border); }
-    .hero {
-      max-width: 1160px; margin: 0 auto;
-      padding: clamp(2.5rem,6vw,4.5rem) clamp(1.25rem,4vw,2.5rem);
-      display: grid; grid-template-columns: 3fr 2fr;
-      gap: 3rem; align-items: start;
-    }
-    @media(max-width:768px){ .hero{ grid-template-columns:1fr; gap:2rem; } }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 0.22rem 0.7rem; border-radius: 3px;
-      margin-bottom: 1.1rem; width: fit-content;
-    }
-    .hero-badge.signal { background: var(--blue-light); color: var(--blue); }
-    .hero-badge.update { background: var(--gray-100); color: var(--gray-500); }
-    .badge-dot { width: 5px; height: 5px; border-radius: 50%; }
-    .signal .badge-dot { background: var(--blue); }
-    .update .badge-dot { background: var(--gray-400); }
-
-    .hero-title {
-      font-size: clamp(1.7rem,4vw,2.6rem);
-      font-weight: 900; line-height: 1.25;
-      letter-spacing: -0.025em; color: var(--navy);
-      margin-bottom: 1.1rem;
-    }
-    .hero-excerpt {
-      font-size: 0.93rem; color: var(--gray-700);
-      line-height: 1.85; margin-bottom: 1.5rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
+    /* ── HERO ── */
+    /* ネイビーベースグラデーション（紫をやめてトンマナ統一） */
+    .hero-wrap {
+      background: linear-gradient(135deg, #1A202C 0%, #2B4C7E 60%, #2B6CB0 100%);
+      color: var(--white);
+      position: relative;
       overflow: hidden;
     }
-    .hero-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .hero-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem; color: var(--gray-400); letter-spacing: 0.08em;
+    /* 背景の光彩エフェクト */
+    .hero-wrap::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(49,130,206,0.2) 0%, transparent 70%);
+      top: -200px; right: -100px;
+      pointer-events: none;
     }
-    .hero-rt { font-size: 0.72rem; color: var(--gray-500); }
-    .btn {
+    .hero-wrap::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(237,137,54,0.08) 0%, transparent 70%);
+      bottom: -100px; left: 100px;
+      pointer-events: none;
+    }
+    .hero {
+      position: relative; z-index: 1;
+      max-width: 1160px; margin: 0 auto;
+      padding: clamp(3.5rem,8vw,5.5rem) clamp(1.25rem,4vw,2.5rem);
+      text-align: center;
+    }
+    .hero-kicker {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--navy); color: var(--white);
-      font-size: 0.85rem; font-weight: 700;
-      padding: 0.75rem 1.75rem; border-radius: 4px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.5rem;
+      padding: 0.3rem 0.9rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+    }
+    /* 強い価値訴求コピー */
+    .hero-title {
+      font-size: clamp(2rem,5vw,3.4rem);
+      font-weight: 900; line-height: 1.2;
+      letter-spacing: -0.025em;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title .accent { color: #63B3ED; }
+    .hero-title .accent-o { color: #F6AD55; }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem,2vw,1.1rem);
+      line-height: 1.75;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2.5rem;
+      max-width: 640px;
+      margin-left: auto; margin-right: auto;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--white); color: var(--navy);
+      font-size: 0.95rem; font-weight: 700;
+      padding: 0.9rem 2.25rem; border-radius: 6px;
       text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      transition: transform 0.2s, box-shadow 0.2s;
       letter-spacing: 0.02em;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     }
-    .btn:hover { background: var(--blue); transform: translateY(-1px); }
-
-    /* STATS BOX */
-    .stats-box {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px; padding: 1.75rem;
-      display: flex; flex-direction: column; gap: 0;
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
     }
-    .stat-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
+    /* 信頼バッジ */
+    .hero-badges {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap;
     }
-    .stat-row:first-child { padding-top: 0; }
-    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .stat-lbl { font-size: 0.8rem; color: var(--gray-500); font-weight: 500; }
-    .stat-val {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.6rem; font-weight: 700;
-      color: var(--navy); line-height: 1;
+    .hero-badge-item {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.05em;
     }
-    .stat-val sup {
-      font-size: 0.65rem; color: var(--blue);
-      font-family: 'Noto Sans JP', sans-serif;
-      margin-left: 0.2rem; vertical-align: super;
+    .hero-badge-item::before {
+      content: '✓';
+      color: #63B3ED; font-weight: 700;
     }
 
-    /* MAIN */
+    /* ── MAIN ── */
     .main {
       max-width: 1160px; margin: 0 auto;
-      padding: 2.5rem clamp(1.25rem,4vw,2.5rem) 6rem;
+      padding: 3rem clamp(1.25rem,4vw,2.5rem) 6rem;
     }
 
-    /* FILTER */
+    /* FILTER - 実務的なラベルに */
     .filters {
       display: flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 2rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem; flex-wrap: wrap;
     }
-    .fl { font-size: 0.72rem; color: var(--gray-400); font-weight: 500; margin-right: 0.25rem; }
+    .fl {
+      font-size: 0.72rem; color: var(--gray-400);
+      font-weight: 500; margin-right: 0.25rem;
+    }
     .fb {
       font-size: 0.75rem; font-weight: 700;
-      padding: 0.35rem 1.1rem; border-radius: 20px;
+      padding: 0.38rem 1.1rem; border-radius: 20px;
       border: 1.5px solid var(--border);
       background: var(--white); color: var(--gray-500);
       cursor: pointer; transition: all 0.18s;
@@ -176,13 +194,13 @@
     .fb:hover { border-color: var(--blue); color: var(--blue); }
     .fb.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
     .fb.fs.active { background: var(--blue); border-color: var(--blue); }
-    .fb.fu.active { background: var(--gray-500); border-color: var(--gray-500); }
+    .fb.fu.active { background: var(--orange); border-color: var(--orange); }
 
     /* SEC TITLE */
     .st {
       font-size: 0.7rem; font-weight: 700;
       letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--gray-400); margin-bottom: 1.25rem;
+      color: var(--gray-400); margin-bottom: 1.5rem;
       display: flex; align-items: center; gap: 0.75rem;
     }
     .st::after { content:''; flex:1; height:1px; background:var(--border); }
@@ -191,7 +209,7 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(3,1fr);
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
     @media(max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); } }
     @media(max-width:560px){ .grid{ grid-template-columns:1fr; } }
@@ -200,48 +218,82 @@
     .card {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 8px; padding: 1.5rem;
+      border-radius: 10px;
       display: flex; flex-direction: column;
       text-decoration: none; color: inherit;
-      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-      position: relative;
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      overflow: hidden;
     }
-    .card.cs { border-top: 3px solid var(--blue); }
-    .card.cu { border-top: 3px solid var(--gray-400); }
     .card:hover {
       box-shadow: var(--shadow-lg);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
       border-color: var(--blue-mid);
     }
 
-    .clbl {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 0.18rem 0.55rem; border-radius: 3px;
-      margin-bottom: 0.85rem; width: fit-content;
+    /* サムネイル：絵文字なし、グラデーション＋カテゴリラベルのみ */
+    .card-thumb {
+      width: 100%; height: 140px;
+      position: relative;
+      overflow: hidden;
     }
-    .clbl.signal { background: var(--blue-light); color: var(--blue); }
-    .clbl.update { background: var(--gray-100); color: var(--gray-500); }
-    .clbl-dot { width: 4px; height: 4px; border-radius: 50%; }
-    .signal .clbl-dot { background: var(--blue); }
-    .update .clbl-dot { background: var(--gray-400); }
+    .card-thumb-bg {
+      width: 100%; height: 100%;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .card-thumb-bg { transform: scale(1.04); }
 
+    .card-thumb-bg.signal {
+      background: linear-gradient(135deg, #1A202C 0%, #2B4C7E 60%, #3182CE 100%);
+    }
+    .card-thumb-bg.update {
+      background: linear-gradient(135deg, #2D3748 0%, #744210 60%, #ED8936 100%);
+    }
+    /* サムネイル内の斜線テクスチャ */
+    .card-thumb-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+    }
+
+    .card-category {
+      position: absolute;
+      top: 0.75rem; left: 0.75rem;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.22rem 0.6rem; border-radius: 3px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(4px);
+    }
+    .card-category.signal { color: var(--blue); }
+    .card-category.update { color: var(--orange); }
+
+    /* カード本文 */
+    .card-body {
+      padding: 1.4rem 1.5rem 1.5rem;
+      display: flex; flex-direction: column; flex: 1;
+    }
     .ctitle {
-      font-size: 0.96rem; font-weight: 700;
+      font-size: 1rem; font-weight: 700;
       line-height: 1.5; letter-spacing: -0.01em;
-      color: var(--navy); margin-bottom: 0.7rem;
+      color: var(--navy); margin-bottom: 0.65rem;
     }
     .cexc {
-      font-size: 0.82rem; color: var(--gray-500);
+      font-size: 0.83rem; color: var(--gray-500);
       line-height: 1.75; flex: 1;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      margin-bottom: 1rem;
     }
     .cfoot {
-      margin-top: 1.1rem; padding-top: 0.9rem;
+      padding-top: 0.9rem;
       border-top: 1px solid var(--border);
       display: flex; align-items: center;
       justify-content: space-between; gap: 0.5rem;
@@ -256,6 +308,31 @@
       opacity: 0; transform: translateX(-4px); transition: all 0.18s;
     }
     .card:hover .carr { opacity:1; transform:translateX(0); }
+    .card.update-card:hover .carr { color: var(--orange); }
+
+    /* SKELETON */
+    .skeleton-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .skeleton-thumb {
+      width: 100%; height: 140px;
+      background: var(--gray-100);
+    }
+    .skeleton-body { padding: 1.4rem 1.5rem; }
+    .skeleton {
+      background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 4px;
+    }
+    .skeleton-title { height: 18px; margin-bottom: 0.75rem; width: 85%; }
+    .skeleton-line { height: 13px; margin-bottom: 0.5rem; }
+    .skeleton-line:last-child { width: 65%; margin-bottom: 0; }
+    @keyframes shimmer {
+      0%{ background-position: 200% 0; }
+      100%{ background-position: -200% 0; }
+    }
 
     /* EMPTY */
     .empty {
@@ -264,20 +341,31 @@
     .empty h3 { font-size:1rem; font-weight:700; color:var(--gray-500); margin-bottom:0.5rem; }
     .empty p { font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gray-400); letter-spacing:0.1em; }
 
-    /* FOOTER */
+    /* ── FOOTER（シンプル化）── */
     footer { background: var(--navy); }
     .ftr {
       max-width: 1160px; margin: 0 auto;
       padding: 2.5rem clamp(1.25rem,4vw,2.5rem);
       display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 1rem;
+      align-items: center; flex-wrap: wrap; gap: 1.5rem;
     }
-    .flogo { font-size:0.95rem; font-weight:900; color:var(--white); letter-spacing:0.04em; }
-    .fsub {
-      font-family:'JetBrains Mono',monospace;
-      font-size:0.58rem; color:rgba(255,255,255,0.35); letter-spacing:0.12em;
+    .ftr-left { display: flex; flex-direction: column; gap: 0.3rem; }
+    .flogo {
+      font-size: 1rem; font-weight: 900;
+      color: var(--white); letter-spacing: 0.02em;
+    }
+    .flogo-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .ftr-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem; color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
     }
 
+    /* ANIMS */
     @keyframes fadeUp {
       from{ opacity:0; transform:translateY(12px); }
       to  { opacity:1; transform:translateY(0); }
@@ -285,13 +373,14 @@
     .hero-wrap { animation: fadeUp 0.6s ease both; }
     .main      { animation: fadeUp 0.6s ease 0.1s both; }
 
-    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
   </style>
 </head>
 <body>
 
+<!-- HEADER：日本語ファースト -->
 <header>
   <div class="hdr">
     <a href="#" class="logo">
@@ -302,52 +391,78 @@
   </div>
 </header>
 
+<!-- HERO：価値訴求コピーに刷新、ネイビーグラデーション -->
 <div class="hero-wrap">
   <div class="hero">
-    <div>
-      <div class="hero-badge signal" id="hbadge"><div class="badge-dot"></div>未来の兆し — Future Signal</div>
-      <h1 class="hero-title" id="htitle">最新レポートを読み込み中...</h1>
-      <p class="hero-excerpt" id="hexc">記事データを取得しています。</p>
-      <div class="hero-meta">
-        <span class="hero-date" id="hdate"></span>
-        <span class="hero-rt" id="hrt"></span>
-      </div>
-      <a href="#" class="btn" id="hlink">記事を読む →</a>
-    </div>
-    <div class="stats-box">
-      <div class="stat-row">
-        <span class="stat-lbl">総レポート数</span>
-        <span class="stat-val" id="ca">0<sup>本</sup></span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-lbl">未来の兆し</span>
-        <span class="stat-val" id="cs">0<sup>本</sup></span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-lbl">速報</span>
-        <span class="stat-val" id="cu">0<sup>本</sup></span>
-      </div>
+    <div class="hero-kicker">For D2C &amp; EC Marketers</div>
+    <h1 class="hero-title">
+      競合が気づく前に、<br>
+      <span class="accent">海外の勝ちパターン</span>を<br>
+      手に入れる。
+    </h1>
+    <p class="hero-subtitle">
+      Meta・TikTok・Shopifyなど、世界のD2C最前線を毎週月曜にキュレーション。<br>
+      日本市場での実装ステップ付きで、意思決定をすぐに動かせる形で届けます。
+    </p>
+    <a href="#articles-container" class="hero-cta">今週のレポートを読む →</a>
+    <div class="hero-badges">
+      <span class="hero-badge-item">毎週月曜配信</span>
+      <span class="hero-badge-item">海外事例を日本語で解説</span>
+      <span class="hero-badge-item">現場で使える実装ステップ付き</span>
     </div>
   </div>
 </div>
 
-<div class="main">
+<!-- MAIN -->
+<div class="main" id="articles-container">
+  <!-- フィルター：実務的なラベルに変更 -->
   <div class="filters">
     <span class="fl">絞り込み：</span>
     <button class="fb active" onclick="doFilter('all',this)">すべて</button>
-    <button class="fb fs" onclick="doFilter('signal',this)">未来の兆し</button>
-    <button class="fb fu" onclick="doFilter('update',this)">速報</button>
+    <button class="fb fs" onclick="doFilter('signal',this)">戦略レポート</button>
+    <button class="fb fu" onclick="doFilter('update',this)">今週のアップデート</button>
   </div>
-  <div class="st">最新レポート一覧</div>
+  <div class="st">最新レポート <span id="article-count" style="color:var(--gray-500);font-weight:400;letter-spacing:0"></span></div>
   <div class="grid" id="grid">
-    <div class="empty"><h3>記事を読み込み中...</h3><p>Loading from Google Drive</p></div>
+    <!-- スケルトンローディング -->
+    <div class="skeleton-card">
+      <div class="skeleton-thumb"></div>
+      <div class="skeleton-body">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+      </div>
+    </div>
+    <div class="skeleton-card">
+      <div class="skeleton-thumb"></div>
+      <div class="skeleton-body">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+      </div>
+    </div>
+    <div class="skeleton-card">
+      <div class="skeleton-thumb"></div>
+      <div class="skeleton-body">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- FOOTER：シンプル化 -->
 <footer>
   <div class="ftr">
-    <div class="flogo">D2C戦略の武器庫</div>
-    <div class="fsub">毎週月曜更新 — Powered by Google Drive + GitHub Pages</div>
+    <div class="ftr-left">
+      <div class="flogo">D2C戦略の武器庫</div>
+      <div class="flogo-sub">Global MKT Weekly</div>
+    </div>
+    <div class="ftr-copy">© 2026 Global MKT Weekly — Powered by Google Drive + GitHub Pages</div>
   </div>
 </footer>
 
@@ -358,56 +473,52 @@
     const s=(a.title+' '+(a.tags||[]).join(' ')).toLowerCase();
     return (s.includes('update')||s.includes('アップデート')||s.includes('速報')||s.includes('ログ'))?'update':'signal';
   }
-  function rt(exc){ return `読了 ${Math.max(2,Math.round((exc||'').length/400))}分`; }
 
-  function renderHero(a){
-    if(!a)return;
-    const t=getType(a);
-    const b=document.getElementById('hbadge');
-    b.className='hero-badge '+t;
-    b.innerHTML=`<div class="badge-dot"></div>${t==='signal'?'未来の兆し — Future Signal':'速報 — Update Log'}`;
-    document.getElementById('htitle').textContent=a.title;
-    document.getElementById('hexc').textContent=a.excerpt;
-    document.getElementById('hdate').textContent=a.date;
-    document.getElementById('hrt').textContent=rt(a.excerpt);
-    document.getElementById('hlink').href=`articles/${a.slug}.html`;
+  function rt(exc){
+    return `読了 ${Math.max(2,Math.round((exc||'').length/400))}分`;
   }
 
   function render(list){
     const g=document.getElementById('grid');
+    const count=document.getElementById('article-count');
+
     if(!list||!list.length){
       g.innerHTML=`<div class="empty"><h3>まだ記事がありません</h3><p>Add .md files to your Google Drive folder</p></div>`;
+      count.textContent='';
       return;
     }
-    let sig=0,upd=0;
+
+    count.textContent=`(${list.length}件)`;
+
     g.innerHTML=list.map(a=>{
       const t=getType(a);
-      if(t==='signal')sig++;else upd++;
-      return `<a href="articles/${a.slug}.html" class="card c${t[0]}">
-        <div class="clbl ${t}"><div class="clbl-dot"></div>${t==='signal'?'未来の兆し':'速報'}</div>
-        <div class="ctitle">${a.title}</div>
-        <div class="cexc">${a.excerpt}</div>
-        <div class="cfoot">
-          <span class="cdate">${a.date}</span>
-          <span class="crt">${rt(a.excerpt)}</span>
-          <span class="carr">読む →</span>
+      const isUpdate = t==='update';
+      return `<a href="articles/${a.slug}.html" class="card ${isUpdate?'update-card':''}">
+        <div class="card-thumb">
+          <div class="card-thumb-bg ${t}"></div>
+          <div class="card-category ${t}">${t==='signal'?'戦略レポート':'アップデート'}</div>
+        </div>
+        <div class="card-body">
+          <div class="ctitle">${a.title}</div>
+          <div class="cexc">${a.excerpt}</div>
+          <div class="cfoot">
+            <span class="cdate">${a.date}</span>
+            <span class="crt">${rt(a.excerpt)}</span>
+            <span class="carr">読む →</span>
+          </div>
         </div>
       </a>`;
     }).join('');
-    document.getElementById('ca').innerHTML=`${list.length}<sup>本</sup>`;
-    document.getElementById('cs').innerHTML=`${sig}<sup>本</sup>`;
-    document.getElementById('cu').innerHTML=`${upd}<sup>本</sup>`;
   }
 
   function doFilter(type,btn){
     document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     const f=type==='all'?articles:articles.filter(a=>getType(a)===type);
-    renderHero(f[0]);
-    render(f.slice(1));
+    render(f);
   }
 
-  if(typeof articles!=='string'){ renderHero(articles[0]); render(articles.slice(1)); }
+  setTimeout(()=>{ render(articles); }, 800);
 </script>
 </body>
 </html>
